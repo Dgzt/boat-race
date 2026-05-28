@@ -1,32 +1,48 @@
 package com.github.dgzt;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.github.dgzt.screen.LoadingScreen;
+import com.mbrlabs.mundus.commons.assets.meta.MetaFileParseException;
+import com.mbrlabs.mundus.runtime.Mundus;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
-public class BoatRace extends ApplicationAdapter {
-    private SpriteBatch batch;
-    private Texture image;
+public class BoatRace extends Game {
+
+    private Mundus mundus;
 
     @Override
     public void create() {
-        batch = new SpriteBatch();
-        image = new Texture("libgdx.png");
+        final var config = new Mundus.Config();
+        config.autoLoad = false; // Do not autoload, we want to queue custom assets
+        config.asyncLoad = true; // Do asynchronous loading
+
+        // Start asynchronous loading
+        mundus = new Mundus(Gdx.files.internal("boat-race"), config);
+        try {
+            mundus.getAssetManager().queueAssetsForLoading(true);
+        } catch (MetaFileParseException e) {
+            e.printStackTrace();
+        }
+
+        final var loadingScene = new LoadingScreen(this);
+        setScreen(loadingScene);
     }
 
     @Override
     public void render() {
-        ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
-        batch.begin();
-        batch.draw(image, 140, 210);
-        batch.end();
+        ScreenUtils.clear(Color.BLACK, true);
+        super.render();
     }
 
     @Override
     public void dispose() {
-        batch.dispose();
-        image.dispose();
+        mundus.dispose();
+    }
+
+    public Mundus getMundus() {
+        return mundus;
     }
 }
