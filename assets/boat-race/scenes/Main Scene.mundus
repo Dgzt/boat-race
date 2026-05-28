@@ -1,0 +1,1 @@
+{id:0,name:Main Scene,skyboxAssetId:6549bfca39b24aadb817312e62a62bd7,ambientLight:{color:-1},directionalLight:{intensity:2,color:-257,direction:{x:0.4,y:-0.90000004},shadowSettingsDTO:{viewportSize:100,camFarPlane:100,shadowResolution:_2048}},camPosY:1,camPosZ:-3,camDirZ:1,camNearPlane:0.2,camFarPlane:10000,camFieldOfView:67,useFrustumCulling:true,waterResolution:_512}
