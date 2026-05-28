@@ -1,6 +1,6 @@
 {
 "name": "boat-race",
-"nextAvailableID": 18,
+"nextAvailableID": 20,
 "currentSceneName": "Main Scene",
 "settings": {
 	"exportAllAssets": true,

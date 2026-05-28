@@ -46,8 +46,6 @@ Terrain3-2.terra
 Terrain3-2.terra.meta
 Terrain3-3.terra
 Terrain3-3.terra.meta
-Water.water
-Water.water.meta
 aerial_beach_01_diff_2k.jpg
 aerial_beach_01_diff_2k.jpg.meta
 aerial_beach_01_nor_gl_2k.png
@@ -66,3 +64,5 @@ clouds1_west.png
 clouds1_west.png.meta
 clouds.sky
 clouds.sky.meta
+Water.water
+Water.water.meta
