@@ -52,3 +52,17 @@ aerial_beach_01_diff_2k.jpg
 aerial_beach_01_diff_2k.jpg.meta
 aerial_beach_01_nor_gl_2k.png
 aerial_beach_01_nor_gl_2k.png.meta
+clouds1_down.png
+clouds1_down.png.meta
+clouds1_east.png
+clouds1_east.png.meta
+clouds1_north.png
+clouds1_north.png.meta
+clouds1_south.png
+clouds1_south.png.meta
+clouds1_up.png
+clouds1_up.png.meta
+clouds1_west.png
+clouds1_west.png.meta
+clouds.sky
+clouds.sky.meta
