@@ -1,6 +1,7 @@
 package com.github.dgzt.screen;
 
 import com.badlogic.gdx.ScreenAdapter;
+import com.github.dgzt.mundus.plugin.joltphysics.runtime.JoltPhysicsPlugin;
 import com.mbrlabs.mundus.commons.Scene;
 import com.mbrlabs.mundus.runtime.Mundus;
 
@@ -17,6 +18,8 @@ public class GameScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
+        JoltPhysicsPlugin.update(delta);
+
         scene.sceneGraph.update(delta);
         scene.render(delta);
     }

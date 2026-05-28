@@ -4,6 +4,9 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.github.dgzt.mundus.plugin.joltphysics.runtime.InitResult;
+import com.github.dgzt.mundus.plugin.joltphysics.runtime.JoltPhysicsPlugin;
+import com.github.dgzt.mundus.plugin.joltphysics.runtime.converter.JoltPhysicsComponentConverter;
 import com.github.dgzt.screen.LoadingScreen;
 import com.mbrlabs.mundus.commons.assets.meta.MetaFileParseException;
 import com.mbrlabs.mundus.runtime.Mundus;
@@ -20,11 +23,17 @@ public class BoatRace extends Game {
         config.asyncLoad = true; // Do asynchronous loading
 
         // Start asynchronous loading
-        mundus = new Mundus(Gdx.files.internal("boat-race"), config);
+        mundus = new Mundus(Gdx.files.internal("boat-race"), config, new JoltPhysicsComponentConverter());
         try {
             mundus.getAssetManager().queueAssetsForLoading(true);
         } catch (MetaFileParseException e) {
             e.printStackTrace();
+        }
+
+        final InitResult initResult = JoltPhysicsPlugin.init();
+        Gdx.app.log("", "Jolt Physics loaded: " + initResult.isSuccess());
+        if (!initResult.isSuccess()) {
+            Gdx.app.error("", "Jolt Physics can not load", initResult.getException());
         }
 
         final var loadingScene = new LoadingScreen(this);
