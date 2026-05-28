@@ -23,4 +23,9 @@ public class GameScreen extends ScreenAdapter {
         scene.sceneGraph.update(delta);
         scene.render(delta);
     }
+
+    @Override
+    public void hide() {
+        JoltPhysicsPlugin.dispose();
+    }
 }
